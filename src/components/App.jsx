@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import TaskForm from './tasks/taskForm/TaskForm'
 import TaskList from './tasks/tasksList/TaskList';
+import { Route, Switch } from 'react-router-dom';
 
 
 function App() {
@@ -22,8 +23,10 @@ function App() {
 
     return (
         <div>
-           <TaskForm setTasks={setTasks} tasks={tasks}/> 
-           <TaskList tasks={tasks}/>
+         <Switch>
+         <Route path='/addtask' render={props => <TaskForm {...props} setTask={setTasks} tasks={tasks} />} />
+             <Route exact path='/' render={props => <TaskList {...props} tasks={tasks} />} />
+         </Switch>
         </div>
     )
 }
