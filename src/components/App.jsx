@@ -44,8 +44,9 @@ function App() {
     return (
         <div>
          <Switch>
-         <Route path='/addtask' render={props => <TaskForm {...props} setTasks={setTasks} tasks={tasks} />} />
-             <Route exact path='/' render={props => <TaskList {...props} tasks={tasks} setTasks={setTasks} toggle={toggleComplete} delete={deleteCompleted} />} />
+            <Route path='/edittask/:id' render={props => <TaskForm {...props} setTasks={setTasks} tasks={tasks} edit={true}/>} />
+            <Route path='/addtask' render={props => <TaskForm {...props} setTasks={setTasks} tasks={tasks} edit={false} />} />
+            <Route exact path='/' render={props => <TaskList {...props} tasks={tasks} setTasks={setTasks} toggle={toggleComplete} delete={deleteCompleted} />} />
          </Switch>
         </div>
     )
