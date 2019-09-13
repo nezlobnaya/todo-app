@@ -12,19 +12,21 @@ function App() {
             if (localStorage.getItem('tasks')) {
              setTasks(JSON.parse(localStorage.getItem('tasks'))); //because local storage stores it in local obj, we need to parse it before we get it
             }
-         }    
+         }   
+         // eslint-disable-next-line 
     }, [])
 
     useEffect(() => {
         if (localStorage.getItem('tasks') && JSON.parse(localStorage.getItem('tasks').length !== tasks.length)) {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }
+        // eslint-disable-next-line
     }, [tasks.length])
 
     return (
         <div>
          <Switch>
-         <Route path='/addtask' render={props => <TaskForm {...props} setTask={setTasks} tasks={tasks} />} />
+         <Route path='/addtask' render={props => <TaskForm {...props} setTasks={setTasks} tasks={tasks} />} />
              <Route exact path='/' render={props => <TaskList {...props} tasks={tasks} />} />
          </Switch>
         </div>
