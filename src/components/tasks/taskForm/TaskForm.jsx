@@ -21,6 +21,7 @@ function TaskForm({ setTasks, tasks, history }) {
     function handleCancel() {
         history.push('/');
     }
+    
     return (
         <div>
             <h1>Task Form</h1>

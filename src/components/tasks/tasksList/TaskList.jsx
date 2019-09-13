@@ -2,15 +2,20 @@ import React from 'react';
 import Task from './Task';
 import {Link} from 'react-router-dom';
 
-function TaskList({tasks}) {
-   
+function TaskList(props) {
+   console.log(props)
     return (
         <div>
-           {tasks.map(task => <Task key={task.id} task={task} />)} 
+          <ul>
+           {props.tasks.map(task => <Task key={task.id} task={task} toggle={props.toggle} />)} 
+          </ul>
            <button> 
             <Link to='/addtask'>
                 Add Task
             </Link>
+           </button>
+           <button onClick={props.delete}>
+               Delete Task 
            </button>
         </div>
     )
